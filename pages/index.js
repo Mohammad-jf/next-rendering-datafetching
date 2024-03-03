@@ -2,15 +2,15 @@
 export default function Home({ data }) {
   return (
     <>
-      <h3>{data[0]}</h3>
+      {data.map((item) => <h3 key={item.id}>{item.title}</h3>)}
     </>
   );
 }
 
 
 export async function getStaticProps() {
-  const data = ['mohammad hossein'];
-
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
 
   return {
     props: {
