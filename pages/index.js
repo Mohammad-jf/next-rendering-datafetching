@@ -2,10 +2,12 @@
 export default function Home({ data }) {
   return (
     <>
-      {data.map((item) => <h3 key={item.id}>{item.title}</h3>)}
+      {<ul>
+        {data.map((item) => <li key={item.id}>{item.title}</li>)}
+      </ul>}
     </>
   );
-}
+      }
 
 
 export async function getStaticProps() {
