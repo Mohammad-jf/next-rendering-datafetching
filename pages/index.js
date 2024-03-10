@@ -1,22 +1,10 @@
 
-export default function Home({ data }) {
+export default function Home() {
   return (
     <>
-      {<ul>
-        {data.map((item) => <li key={item.id}>{item.title}</li>)}
-      </ul>}
+      <h1>Home Page</h1>
     </>
   );
-      }
-
-
-export async function getStaticProps() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const data = await res.json();
-
-  return {
-    props: {
-      data
-    }
-  }
 }
+
+
