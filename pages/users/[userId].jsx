@@ -35,9 +35,17 @@ export async function getStaticPaths() {
 
 // get data for each page
 export async function getStaticProps(context) {
+
     const { params } = context;
     const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`);
     const data = await res.json();
+
+    if (!data.name) {
+        return {
+            notFound: true
+        }
+
+    }
 
     return {
         props: {
