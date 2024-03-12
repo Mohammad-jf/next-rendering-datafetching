@@ -1,14 +1,10 @@
-import { useRouter } from 'next/router'
 import React from 'react'
 
 
 
 const UserId = ({ data }) => {
-    const router = useRouter();
 
-    if (router.isFallback) {
-        return <h2>FallBack page...</h2>
-    }
+
     return (
         <div>{data.name}</div>
     )
@@ -26,7 +22,7 @@ export async function getStaticPaths() {
     let paths = userData.map((item) => ({ params: { userId: String(item.id) } }))
     return {
         paths,
-        fallback: true
+        fallback: 'blocking'
     }
 }
 
