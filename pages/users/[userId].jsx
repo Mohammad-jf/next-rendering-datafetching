@@ -40,7 +40,9 @@ export async function getStaticProps(context) {
     const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`);
     const data = await res.json();
 
+    // handler if data doesnt exist
     if (!data.name) {
+        // next undrestand and it will redirect to 404
         return {
             notFound: true
         }
