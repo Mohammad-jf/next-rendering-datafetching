@@ -40,7 +40,7 @@ export async function getStaticProps(context) {
     if (!data.name) {
         // next undrestand and it will redirect to 404
         return {
-            notFound: true
+            redirect: { destination: '/users' }
         }
 
     }
