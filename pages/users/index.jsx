@@ -17,7 +17,7 @@ export default Users
 
 export async function getStaticProps() {
   console.log('regenerating');
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const res = await fetch('http://localhost:4000/users');
   const data = await res.json();
 
   return {
