@@ -1,11 +1,15 @@
-import React from 'react'
+import Link from 'next/link'
 
 function Albums({ data }) {
     const newData = data.slice(0, 40)
     return (
         <div>
             <ul>
-                {newData.map((album) => <li key={album.id}>{album.title}</li>)}
+                {newData.map((album) => <li key={album.id}>
+                    <Link href={`/albums/${album.id}`}>
+                        {album.title}
+                    </Link>
+                </li>)}
             </ul>
         </div>
     )
@@ -15,9 +19,8 @@ export default Albums
 
 
 export async function getServerSideProps(context) {
-    const { req, res, params } = context;
-    console.log(req)
-    const response = await fetch('http://localhost:4000/albums');
+    const { req, res, params, query } = context;
+    const response = await fetch('https://jsonplaceholder.typicode.com/albums');
     const data = await response.json();
 
     return {

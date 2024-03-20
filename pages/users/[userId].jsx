@@ -15,7 +15,7 @@ export default UserId
 
 // getting address for each page and pages length
 export async function getStaticPaths() {
-    const res = await fetch('http://localhost:4000/users');
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
     const data = await res.json();
     const userData = data.slice(0, 4)
 
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 
     const { params } = context;
-    const res = await fetch(`http://localhost:4000/users/${params.userId}`);
+    const res = await fetch(`https://jsonplaceholder.typicode.com/${params.userId}`);
     const data = await res.json();
 
     // handler if data doesnt exist
