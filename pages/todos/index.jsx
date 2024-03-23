@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr';
 
@@ -16,7 +17,7 @@ const Todos = () => {
     return (
         <div>
             <ul>
-                {data.map(todo => <li key={todo.id}>{todo.title}</li>)}
+                {data.map(todo => <Link key={todo.id} href={`/todos/${todo.id}`}><li >{todo.title}</li></Link>)}
             </ul>
         </div>
     )
